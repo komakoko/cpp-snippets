@@ -1,0 +1,45 @@
+{
+  "LIS": {
+    "scope": "cpp",
+    "prefix": [
+      "LIS",
+      "最長増加部分列"
+    ],
+    "body": [
+      "auto LIS = [&](const vector<ll> &A) -> vector<ll> { // 最長増加部分列",
+      "\tvector<ll> dist(A.size(), 0);",
+      "\t// 各部分列長での最小の末尾の要素 ",
+      "\tvector<ll> len(n+1, 1<<30); len[0] = -1;",
+      "\trep(i, A.size()) {",
+      "\t\t// posは末尾がA[i]より小さい最長部分列の長さ + 1",
+      "\t\tint pos = lower_bound(len.begin(), len.end(), A[i]) - len.begin(); // A[i] < A[i+1]",
+      "\t\t// int pos = upper_bound(len.begin(), len.end(), A[i]) - len.begin(); // A[i] <= A[i+1]",
+      "\t\tdist[i] = pos;",
+      "\t\tlen[pos] = A[i];",
+      "\t}",
+      "\treturn dist;",
+      "};"
+    ],
+    "description": "最長増加部分列"
+  },
+  "LDS": {
+    "scope": "cpp",
+    "prefix": "LDS",
+    "body": [
+      "auto LDS = [&](vector<ll> &A) -> vector<int> { // 最長減少部分列",
+      "\tvector<int> dist(A.size(), 0);",
+      "\tconst ll INF = 1e18;",
+      "\tvector<ll> len(A.size() + 1, -INF);",
+      "\tlen[0] = INF;",
+      "\trep(i, A.size()) {",
+      "\t\tint pos = lower_bound(len.begin(), len.end(), A[i], greater<ll>()) - len.begin(); // A[i] > A[i+1]",
+      "\t\t// int pos = upper_bound(len.begin(), len.end(), A[i], greater<ll>()) - len.begin(); // A[i] >= A[i+1]",
+      "\t\tdist[i] = pos;",
+      "\t\tlen[pos] = A[i];",
+      "\t}",
+      "\treturn dist;",
+      "};"
+    ],
+    "description": "最長減少部分列"
+  }
+}

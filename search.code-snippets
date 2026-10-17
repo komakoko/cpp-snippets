@@ -1,0 +1,72 @@
+{
+  "binarysearch": {
+    "scope": "cpp",
+    "prefix": [
+      "binarysearch",
+      "にぶたん"
+    ],
+    "body": [
+      "auto check = [&](ll x) -> bool{",
+      "\treturn true;",
+      "};",
+      "ll ng = -1; ll ok = 1LL<<60;",
+      "while(abs(ok-ng) > 1) {",
+      "\tll mid = (ok + ng) / 2;",
+      "\tif(check(mid)) ok = mid;",
+      "\telse ng = mid;",
+      "}"
+    ],
+    "description": "二部探索"
+  },
+  "ternarysearch": {
+    "scope": "cpp",
+    "prefix": [
+      "ternarysearch",
+      "三分探索",
+      "三部探索"
+    ],
+    "body": [
+      "auto f = [&](ll x) -> ll {",
+      "\treturn ${1:0};",
+      "};",
+      "ll low = ${2:0}; ll high = ${3:1LL<<60};",
+      "while(high - low > 3) {",
+      "\tll mid1 = low + (high - low) / 3;",
+      "\tll mid2 = high - (high - low) / 3;",
+      "\tif(f(mid1) < f(mid2)) low = mid1; // 最大化",
+      "\t// if(f(mid1) > f(mid2)) low = mid1; // 最小化",
+      "\telse high = mid2;",
+      "}",
+      "ll ans = low;",
+      "for(ll x = low; x <= high; x++) {",
+      "\tif(f(ans) < f(x)) ans = x; // 最大化",
+      "\t// if(f(ans) > f(x)) ans = x; // 最小化",
+      "}"
+    ],
+    "description": "三分探索"
+  },
+  "syakutori": {
+    "scope": "cpp",
+    "prefix": [
+      "syakutori",
+      "尺取り法"
+    ],
+    "body": [
+      "int r = 0;",
+      "for(int l = 0; l < n; l++) {",
+      "\twhile(r < n && (true を r を 1 進めても 条件を満たす)) {",
+      "\t\t",
+      "\t\tr++;",
+      "\t}",
+      "",
+      "\t// [l, r) は条件を満たしている",
+      "",
+      "\tif(l == r) r++;",
+      "\telse { // lを1進める A[l] を区間から外す",
+      "",
+      "\t}",
+      "}"
+    ],
+    "description": "尺取り法 参考 : https://qiita.com/drken/items/ecd1a472d3a0e7db8dce"
+  }
+}

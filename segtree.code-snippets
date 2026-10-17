@@ -1,0 +1,51 @@
+{
+  "segtree ": {
+    "scope": "cpp",
+    "prefix": "segtree",
+    "body": [
+      "segtree<$1, op, e> seg();"
+    ]
+  },
+  "lazysegtree": {
+    "scope": "cpp",
+    "prefix": "lazysegtree",
+    "body": [
+      "lazy_segtree<S, op, e, F, mapping, composition, id> seg(n);"
+    ]
+  },
+  "lazysegtree_pre": {
+    "scope": "cpp",
+    "prefix": "lazysegtree(必要な関数の定義)",
+    "body": [
+      "struct S {",
+      "\tll val;",
+      "\tll len;",
+      "};",
+      "S op(S a, S b) { return {a.val + b.val, a.len + b.len}; }",
+      "S e() { return {0, 0}; }",
+      "struct F {",
+      "\tll val;",
+      "};",
+      "F id() { return {0}; }",
+      "S mapping(F f, S x) {",
+      "\treturn {x.val + f.val * x.len, x.len};",
+      "}",
+      "F composition(F f, F g) { // gがこれまでの操作、fが後に追加する操作",
+      "\treturn {f.val + g.val};",
+      "}"
+    ]
+  },
+  "segtree_pre": {
+    "scope": "cpp",
+    "prefix": "segtree(必要な関数の定義)",
+    "body": [
+      "struct S {",
+      "\tll val;",
+      "};",
+      "S op(S l, S r) {",
+      "}",
+      "S e() {",
+      "}"
+    ]
+  }
+}

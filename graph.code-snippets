@@ -1,0 +1,210 @@
+{
+  // グラフ
+  "dijkstra": {
+    "scope": "cpp",
+    "prefix": [
+      "dijkstra",
+      "ダイクストラ法"
+    ],
+    "body": [
+      "vector<ll> dist(n, 1LL<<60);",
+      "priority_queue< pll, vector<pll>, greater<pll> > pq;",
+      "pq.push({0, 0}); // {始点での累積重み, 始点}",
+      "while(!pq.empty()) {",
+      "\tauto [d, u] = pq.top(); pq.pop();",
+      "\tif(dist[u] <= d) continue;",
+      "\tdist[u] = d;",
+      "\tfor(auto[v, w] : adj[u]) {",
+      "\t// adj : 隣接頂点 重みの順",
+      "\t\tif(dist[v] <= d + w) continue;",
+      "\t\tpq.push({d + w, v});",
+      "\t}",
+      "}"
+    ],
+    "description": "ダイクストラ法"
+  },
+  "bfs": {
+    "scope": "cpp",
+    "prefix": "BFS",
+    "body": [
+      "auto bfs = [&](const vector<ll> &start_points, const vector<vector<ll>> &adj) -> vector<ll> {",
+      "\tvector<ll> dist(adj.size(), -1);",
+      "\tqueue<ll> queue_bfs;",
+      "\tfor (ll start_point : start_points) {",
+      "\t\tqueue_bfs.push(start_point);",
+      "\t\tdist[start_point] = 0;",
+      "\t}",
+      "\twhile (!queue_bfs.empty()) {",
+      "\t\tll u = queue_bfs.front();",
+      "\t\tqueue_bfs.pop();",
+      "\t\tfor (auto v : adj[u])",
+      "\t\t\tif (dist[v] == -1) {",
+      "\t\t\t\tdist[v] = dist[u] + 1;",
+      "\t\t\t\tqueue_bfs.push(v);",
+      "\t\t\t}",
+      "\t}",
+      "\treturn dist;",
+      "};"
+    ],
+    "description": "幅優先探索"
+  },
+  "dfs": {
+    "scope": "cpp",
+    "prefix": "dfs",
+    "body": [
+      "vector<bool> visited(n, false);",
+      "auto dfs = [&](auto self, ll u) -> void {",
+      "\tvisited[u] = true;",
+      "\tfor(auto v : adj[u]) {",
+      "\t\tif(visited[v]) continue;",
+      "\t\tself(self, v);",
+      "\t}",
+      "};",
+      "dfs(dfs, 0);"
+    ]
+  },
+  "bipartite_graph_paint(DFS)": {
+    "scope": "cpp",
+    "prefix": [
+      "bipartite_graph_paint(DFS)",
+      "二部グラフの塗り分け(DFS)"
+    ],
+    "body": [
+      "vector<ll> colors(n, 0); // 0:未訪問 1, -1: 色分け済み",
+      "auto dfs = [&](auto self, ll u, ll color) -> void {",
+      "\tcolors[u] = color;",
+      "\tfor(auto v : adj[u]) {",
+      "\t\tif(colors[v] != 0) continue;",
+      "\t\tself(self, v, -color);",
+      "\t}",
+      "};",
+      "dfs(dfs, 0, 1);"
+    ],
+    "description": "二部グラフの塗り分け(DFS)"
+  },
+  "floyd_warshall": {
+    "scope": "cpp",
+    "prefix": [
+      "floyd_warshall",
+      "warshall_floyd",
+      "ワ―シャルフロイド法"
+    ],
+    "body": [
+      "vector<vector<ll>> dist(n, vector<ll>(n, 1LL<<60));",
+      "\trep(i, n) dist[i][i] = 0;",
+      "\t",
+      "\t// 辺の重みを入力する",
+      "\trep(i, m) {",
+      "\t\tll u, v, w;",
+      "\t\tcin >> u >> v >> w; u--; v--;",
+      "\t\tdist[u][v] = min(dist[u][v], w);",
+      "\t\tdist[v][u] = min(dist[v][u], w);",
+      "\t}",
+      "\t",
+      "\t// 最短路を計算する",
+      "\trep(i, k) {",
+      "\t\trep(i, n) {",
+      "\t\t\trep(j, n) {",
+      "\t\t\t\tdist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);",
+      "\t\t\t}",
+      "\t\t}",
+      "\t}"
+    ],
+    "description": "ワ―シャルフロイド法"
+  },
+  "bfs_01": {
+    "scope": "cpp",
+    "prefix": "01bfs",
+    "body": [
+      "auto bfs = [&](ll start_point, const vector<vector<pll>>& adj) -> vector<ll> {",
+      "\tvector<ll> dist(adj.size(), 1<<30);",
+      "\tdeque<ll> dq;",
+      "",
+      "\tdist[start_point] = 0; dq.push_front(start_point);",
+      "",
+      "\twhile(!dq.empty()) {",
+      "\t\tint u = dq.front(); dq.pop_front();",
+      "\t\tfor(auto [v, w] : adj[u]) {",
+      "\t\t\tif(dist[v] > dist[u] + w) {",
+      "\t\t\t\tdist[v] = dist[u] + w;",
+      "\t\t\t\tif(w == 0) {",
+      "\t\t\t\t\tdq.push_front(v); // コスト0なら先頭へ",
+      "\t\t\t\t} else {",
+      "\t\t\t\t\tdq.push_back(v);  // コスト1なら末尾へ",
+      "\t\t\t\t}",
+      "\t\t\t}",
+      "\t\t}",
+      "\t}",
+      "\treturn dist;",
+      "};"
+    ]
+  },
+  "dfs_cycle": {
+    "scope": "cpp",
+    "prefix": "dfs_cycle",
+    "body": [
+      "vector<bool> visited(n * w, false);",
+      "\tvector<bool> finished(n * w, false);",
+      "\tauto dfs = [&](auto self, ll u) -> bool {",
+      "\t\tvisited[u] = true;",
+      "\t\tfor(auto v : adj2[u]) {",
+      "\t\t\tif(finished[v]) continue;",
+      "\t\t\tif(!finished[v] && visited[v]) return true;",
+      "\t\t\tif(self(self, v)) return true;",
+      "\t\t}",
+      "\t\tfinished[u] = true;",
+      "\t\treturn false;",
+      "\t};"
+    ]
+  },
+  "adj": {
+    "scope": "cpp",
+    "prefix": "adj(重み無し 無向)",
+    "body": [
+      "vector<vector<ll>> adj(n);",
+      "rep(i, m) {",
+      "\tll u, v;",
+      "\tcin >> u >> v; u--; v--;",
+      "\tadj[u].push_back(v);",
+      "\tadj[v].push_back(u);",
+      "}"
+    ]
+  },
+  "adj_d_w": {
+    "scope": "cpp",
+    "prefix": "adj(重みあり 有向)",
+    "body": [
+      "vector<vector<pll>> adj(n);",
+      "rep(i, m) {",
+      "\tll u, v, w;",
+      "\tcin >> u >> v >> w; u--; v--;",
+      "\tadj[u].push_back({v, w});",
+      "\tadj[v].push_back({u, w});",
+      "}"
+    ]
+  },
+  "adj_d": {
+    "scope": "cpp",
+    "prefix": "adj(重み無し 有向)",
+    "body": [
+      "vector<vector<ll>> adj(n);",
+      "rep(i, m) {",
+      "\tll u, v;",
+      "\tcin >> u >> v; u--; v--;",
+      "\tadj[u].push_back(v);",
+      "}"
+    ]
+  },
+  "adj_w": {
+    "scope": "cpp",
+    "prefix": "adj_w(重みあり 有向)",
+    "body": [
+      "vector<vector<pll>> adj(n);",
+      "rep(i, m) {",
+      "\tll u, v, w;",
+      "\tcin >> u >> v >> w; u--; v--;",
+      "\tadj[u].push_back({v, w});",
+      "}"
+    ]
+  }
+}

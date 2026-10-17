@@ -1,0 +1,52 @@
+{
+  "yesno": {
+    "scope": "cpp",
+    "prefix": "yesno",
+    "body": [
+      "cout << ( $1 ? \"Yes\" : \"No\") << endl;"
+    ],
+    "description": "boolからYesNoを出力"
+  },
+  "time": {
+    "scope": "cpp",
+    "prefix": "time",
+    "body": [
+      "// $CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND"
+    ]
+  },
+  "'\\n'": {
+    "scope": "cpp",
+    "prefix": "endl",
+    "body": [
+      "'\\n'"
+    ]
+  },
+  "inf": {
+    "scope": "cpp",
+    "prefix": "inf",
+    "body": [
+      "constexpr ll inf = 1LL<<60; "
+    ]
+  },
+  "vec2": {
+    "scope": "cpp",
+    "prefix": "vec2",
+    "body": [
+      "vector<vector<$1>> $2($3, vector<$1>($4));"
+    ]
+  },
+  "vec3": {
+    "scope": "cpp",
+    "prefix": "vec3",
+    "body": [
+      "vector<vector<vector<$1>>> $2($3, vector<vector<$1>>($4, vector<$1>($5)));"
+    ]
+  },
+  "unique": {
+    "prefix": "unique",
+    "body": [
+      "$1.erase(unique(all($1)), $1.end());"
+    ],
+    "scope": "cpp"
+  }
+}

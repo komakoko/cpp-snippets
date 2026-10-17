@@ -1,0 +1,44 @@
+{
+  "pair_hash": {
+    "scope": "cpp",
+    "prefix": "pair_hash",
+    "body": [
+      "template<typename T>",
+      "struct pair_hash {",
+      "\tsize_t operator()(const pll& p) const {",
+      "\t\tsize_t h1 = hash<ll>{}(p.first);",
+      "\t\tsize_t h2 = hash<ll>{}(p.second);",
+      "\t\treturn h1 ^ (h2 + 0x9e3779b9 + (h1 << 6) + (h1 >> 2));",
+      "\t}",
+      "};"
+    ]
+  },
+  "vector_hash": {
+    "prefix": "vector_hash",
+    "body": [
+      "template<typename T>",
+      "struct vector_hash {",
+      "\tsize_t operator()(const vector<T>& v) const {",
+      "\t\tsize_t res = 0;",
+      "\t\tfor (auto& e : v) {",
+      "\t\t\tres ^= hash<T>{}(e) + 0x9e3779b9 + res * res;",
+      "\t\t}",
+      "\t\treturn res;",
+      "\t}",
+      "};"
+    ],
+    "scope": "cpp"
+  },
+  "orderd_set": {
+    "scope": "cpp",
+    "prefix": "orderd_set",
+    "body": [
+      "#include <ext/pb_ds/assoc_container.hpp>",
+      "#include <ext/pb_ds/tree_policy.hpp>",
+      "using namespace __gnu_pbds;",
+      "template <typename T>",
+      "using ordered_set = tree<T, null_type, std::less<T>, rb_tree_tag, tree_order_statistics_node_update>;"
+    ],
+    "description": "orderd_setを使うためのおまじない"
+  }
+}

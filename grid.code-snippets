@@ -1,0 +1,77 @@
+{
+  // グリッド用
+  "d4": {
+    "scope": "cpp",
+    "prefix": "d4",
+    "body": [
+      "const ll dy[4] = {1, -1, 0, 0};",
+      "const ll dx[4] = {0, 0, 1, -1};"
+    ]
+  },
+  "d8": {
+    "scope": "cpp",
+    "prefix": "d8",
+    "body": [
+      "const ll dy[8] = {0, 0, 1, 1, 1, -1, -1, -1};",
+      "const ll dx[8] = {1, -1, 0, 1, -1, 0, 1, -1};"
+    ]
+  },
+  "gridok": {
+    "scope": "cpp",
+    "prefix": "gridok",
+    "body": [
+      "auto gridok = [&](ll y, ll x) {",
+      "\treturn (0 <= y && 0 <= x && y < h && x < w);",
+      "};"
+    ]
+  },
+  "bfs_grid": {
+    "scope": "cpp",
+    "prefix": "bfs_grid",
+    "body": [
+      "ll dy[] = {1, -1, 0, 0};",
+      "ll dx[] = {0, 0, 1, -1};",
+      "auto gridok = [&](ll y, ll x) {",
+      "\treturn (0 <= y && 0 <= x && y < h && x < w);",
+      "};",
+      "vector<vector<ll>> dist(h, vector<ll>(w, -1));",
+      "queue<pll> queue_bfs;",
+      "queue_bfs.push({0, 0}); dist[0][0] = 0;",
+      "while(!queue_bfs.empty()) {",
+      "\tauto [y, x] = queue_bfs.front(); queue_bfs.pop();",
+      "\tfor(ll i = 0; i < 4; i++) {",
+      "\t\tint next_y = y + dy[i];",
+      "\t\tint next_x = x + dx[i];",
+      "\t\t// 壁などがあればcontinue",
+      "",
+      "\t\tif(!gridok(next_y, next_x) || dist[next_y][next_x] != -1) continue;",
+      "\t\tdist[next_y][next_x] = dist[y][x] + 1;",
+      "\t\tqueue_bfs.push({next_y, next_x});",
+      "\t}",
+      "}"
+    ]
+  },
+  "bfs_grid_01": {
+    "scope": "cpp",
+    "prefix": "bfs_grid_01",
+    "body": [
+      "vector<vector<ll>> dist(h, vector<ll>(w, 1LL<<30));",
+      "deque<pll> deque_bfs;",
+      "dist[0][0] = 0;",
+      "deque_bfs.push_front({0, 0});",
+      "while(!deque_bfs.empty()) {",
+      "\tauto [y, x] = deque_bfs.front(); deque_bfs.pop_front();",
+      "\tfor(ll i = 0; i < 4; i++) {",
+      "\t\tint next_y = y + dy[i]; ll next_x = x + dx[i];",
+      "\t\t// 壁などがあればcontinue",
+      "\t\tif(!gridok(next_y, next_x) || dist[next_y][next_x] != 1LL<<30) continue;",
+      "\t\t// ここでコストを計算する！問題によって変更する",
+      "\t\tint cost = 1;",
+      "\t\tdist[next_y][next_x] = dist[y][x] + cost;",
+      "\t\tif(cost == 0) deque_bfs.push_front({next_y, next_x}); // コスト0は先頭",
+      "\t\telse deque_bfs.push_back({next_y, next_x});  // コスト1は末尾",
+      "\t}",
+      "}"
+    ]
+  }
+}
