@@ -1,4 +1,13 @@
 {
+  "priority_queue_cmp": {
+    "scope": "cpp",
+    "prefix": "pqcmp",
+    "body": [
+      "auto cmp = [&](const ${1:ll}& a, const $1& b) { return a < b; };",
+      "priority_queue<$1, vector<$1>, decltype(cmp)> pq(cmp);$0"
+    ],
+    "description": "比較関数を指定する priority_queue"
+  },
   "pair_hash": {
     "scope": "cpp",
     "prefix": "pair_hash",
