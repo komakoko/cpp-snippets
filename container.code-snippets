@@ -1,4 +1,12 @@
 {
+  "priority_queue_min": {
+    "scope": "cpp",
+    "prefix": "pqmin",
+    "body": [
+      "priority_queue<${1:ll}, vector<$1>, greater<$1>> pq;$0"
+    ],
+    "description": "小さい順に取り出す priority_queue"
+  },
   "priority_queue_cmp": {
     "scope": "cpp",
     "prefix": "pqcmp",
@@ -7,6 +15,24 @@
       "priority_queue<$1, vector<$1>, decltype(cmp)> pq(cmp);$0"
     ],
     "description": "比較関数を指定する priority_queue"
+  },
+  "map_cmp": {
+    "scope": "cpp",
+    "prefix": "mapcmp",
+    "body": [
+      "auto cmp = [&](const ${1:ll}& a, const $1& b) { return a < b; };",
+      "map<$1, ${2:ll}, decltype(cmp)> mp(cmp);$0"
+    ],
+    "description": "比較関数を指定する map"
+  },
+  "set_cmp": {
+    "scope": "cpp",
+    "prefix": "setcmp",
+    "body": [
+      "auto cmp = [&](const ${1:ll}& a, const $1& b) { return a < b; };",
+      "set<$1, decltype(cmp)> st(cmp);$0"
+    ],
+    "description": "比較関数を指定する set"
   },
   "pair_hash": {
     "scope": "cpp",
