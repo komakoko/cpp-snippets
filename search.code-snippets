@@ -1,10 +1,7 @@
 {
   "binarysearch": {
     "scope": "cpp",
-    "prefix": [
-      "binarysearch",
-      "にぶたん"
-    ],
+    "prefix": "binarysearch",
     "body": [
       "auto check = [&](ll x) -> bool{",
       "\treturn true;",
@@ -20,11 +17,7 @@
   },
   "ternarysearch": {
     "scope": "cpp",
-    "prefix": [
-      "ternarysearch",
-      "三分探索",
-      "三部探索"
-    ],
+    "prefix": "ternarysearch",
     "body": [
       "auto f = [&](ll x) -> ll {",
       "\treturn ${1:0};",
@@ -47,10 +40,7 @@
   },
   "syakutori": {
     "scope": "cpp",
-    "prefix": [
-      "syakutori",
-      "尺取り法"
-    ],
+    "prefix": "syakutori",
     "body": [
       "int r = 0;",
       "for(int l = 0; l < n; l++) {",
