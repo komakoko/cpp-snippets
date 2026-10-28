@@ -1,7 +1,7 @@
 {
   "priority_queue_min": {
     "scope": "cpp",
-    "prefix": ["pqmin", "priority_queue_min"],
+    "prefix": "priority_queue_min",
     "body": [
       "priority_queue<${1:ll}, vector<$1>, greater<$1>> pq;$0"
     ],
@@ -9,7 +9,7 @@
   },
   "priority_queue_cmp": {
     "scope": "cpp",
-    "prefix": ["pqcmp", "priority_queue_cmp"],
+    "prefix": "priority_queue_cmp",
     "body": [
       "auto cmp = [&](const ${1:ll}& a, const $1& b) { return a < b; };",
       "priority_queue<$1, vector<$1>, decltype(cmp)> pq(cmp);$0"
@@ -18,7 +18,7 @@
   },
   "map_cmp": {
     "scope": "cpp",
-    "prefix": "mapcmp",
+    "prefix": "map_cmp",
     "body": [
       "auto cmp = [&](const ${1:ll}& a, const $1& b) { return a < b; };",
       "map<$1, ${2:ll}, decltype(cmp)> mp(cmp);$0"
@@ -27,7 +27,7 @@
   },
   "set_cmp": {
     "scope": "cpp",
-    "prefix": "setcmp",
+    "prefix": "set_cmp",
     "body": [
       "auto cmp = [&](const ${1:ll}& a, const $1& b) { return a < b; };",
       "set<$1, decltype(cmp)> st(cmp);$0"
