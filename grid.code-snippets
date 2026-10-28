@@ -21,7 +21,8 @@
     "prefix": "gridok",
     "body": [
       "auto gridok = [&](ll y, ll x) {",
-      "\treturn (0 <= y && 0 <= x && y < h && x < w);",
+      "\tif(y < 0 || x < 0 || y >= h || x >= w) return false;",
+      "\treturn true;",
       "};"
     ]
   },
@@ -32,7 +33,8 @@
       "ll dy[] = {1, -1, 0, 0};",
       "ll dx[] = {0, 0, 1, -1};",
       "auto gridok = [&](ll y, ll x) {",
-      "\treturn (0 <= y && 0 <= x && y < h && x < w);",
+      "\tif(y < 0 || x < 0 || y >= h || x >= w) return false;",
+      "\treturn true;",
       "};",
       "vector<vector<ll>> dist(h, vector<ll>(w, -1));",
       "queue<pll> queue_bfs;",
@@ -55,6 +57,10 @@
     "scope": "cpp",
     "prefix": "bfs_grid_01",
     "body": [
+      "auto gridok = [&](ll y, ll x) {",
+      "    if(y < 0 || x < 0 || y >= h || x >= w) return false;",
+      "    return true;",
+      "};",
       "vector<vector<ll>> dist(h, vector<ll>(w, 1LL<<30));",
       "deque<pll> deque_bfs;",
       "dist[0][0] = 0;",
