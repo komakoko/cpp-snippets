@@ -69,55 +69,5 @@
       "}",
       ""
     ]
-  },
-  "query_lazysegtree": {
-    "scope": "cpp",
-    "prefix": [
-      "query_lazysegtree",
-      "query_razysegtree"
-    ],
-    "description": "ACL遅延セグ木用。1: 区間更新、2: 区間取得。S.val・F.valを使う。入力は1始まり・閉区間。",
-    "body": [
-      "while(q--) {",
-      "\tll type;",
-      "\tcin >> type;",
-      "\tif(type == 1) {",
-      "\t\tll l, r, x;",
-      "\t\tcin >> l >> r >> x;",
-      "\t\tl--;",
-      "\t\tseg.apply(l, r, F{x});",
-      "\t} else {",
-      "\t\tll l, r;",
-      "\t\tcin >> l >> r;",
-      "\t\tl--;",
-      "\t\tcout << seg.prod(l, r).val << endl;",
-      "\t}",
-      "}",
-      ""
-    ]
-  },
-  "query_lazysegtree_add_assign": {
-    "scope": "cpp",
-    "prefix": "query_lazysegtree_add_assign",
-    "description": "koma遅延セグ木用。1: 区間加算、2: 区間代入、3: 区間取得。入力は1始まり・閉区間。",
-    "body": [
-      "while(q--) {",
-      "\tll type;",
-      "\tcin >> type;",
-      "\tif(type == 1 || type == 2) {",
-      "\t\tll l, r, x;",
-      "\t\tcin >> l >> r >> x;",
-      "\t\tl--;",
-      "\t\tif(type == 1) seg.add(l, r, x);",
-      "\t\telse seg.assign(l, r, x);",
-      "\t} else {",
-      "\t\tll l, r;",
-      "\t\tcin >> l >> r;",
-      "\t\tl--;",
-      "\t\tcout << seg.prod(l, r) << endl;",
-      "\t}",
-      "}",
-      ""
-    ]
   }
 }
