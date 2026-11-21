@@ -22,9 +22,17 @@
       "\treturn;",
       "}",
       "",
-      "// clang-format off",
-      "int main() { cin.tie(nullptr); ios::sync_with_stdio(false); int test_case = 1; cout << std::setprecision(15); while(test_case--) { solve(); } return 0; }",
-      "// clang-format on"
+      "int main() {",
+      "\tcin.tie(nullptr);",
+      "\tios::sync_with_stdio(false);",
+      "\tint test_case = 1;",
+      "\t// cin >> test_case;",
+      "\tcout << std::setprecision(15);",
+      "\twhile(test_case--) {",
+      "\t\tsolve();",
+      "\t}",
+      "\treturn 0;",
+      "}"
     ]
   },
   "Generate": {
