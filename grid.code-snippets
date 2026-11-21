@@ -8,6 +8,26 @@
       "const ll dx[4] = {0, 0, 1, -1};"
     ]
   },
+  "dx4_C": {
+    "scope": "cpp",
+    "prefix": "dx4_C",
+    "description": "yは下向きが正。",
+    "body": [
+      "array<ll, 256> dx{}, dy{};",
+      "dx['L'] = -1; dx['R'] = 1;",
+      "dy['D'] = 1; dy['U'] = -1;"
+    ]
+  },
+  "dx4_c": {
+    "scope": "cpp",
+    "prefix": "dx4_c",
+    "description": "yは下向きが正。",
+    "body": [
+      "array<ll, 256> dx{}, dy{};",
+      "dx['l'] = -1; dx['r'] = 1;",
+      "dy['d'] = 1; dy['u'] = -1;"
+    ]
+  },
   "d8": {
     "scope": "cpp",
     "prefix": "d8",
