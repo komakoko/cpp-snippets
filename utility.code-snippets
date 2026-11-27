@@ -49,6 +49,13 @@
       "vector<vector<vector<vector<$1>>>> $2($3, vector<vector<vector<$1>>>($4, vector<vector<$1>>($5, vector<$1>($6))));"
     ]
   },
+  "vec5": {
+    "scope": "cpp",
+    "prefix": "vec5",
+    "body": [
+      "vector<vector<vector<vector<vector<$1>>>>> $2($3, vector<vector<vector<vector<$1>>>>($4, vector<vector<vector<$1>>>($5, vector<vector<$1>>($6, vector<$1>($7)))));"
+    ]
+  },
   "unique": {
     "prefix": "unique",
     "body": [
