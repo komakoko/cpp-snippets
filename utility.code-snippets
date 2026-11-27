@@ -32,28 +32,28 @@
     "scope": "cpp",
     "prefix": "vec2",
     "body": [
-      "vector<vector<$1>> $2($3, vector<$1>($4));"
+      "vector $2($3, vector<$1>($4));"
     ]
   },
   "vec3": {
     "scope": "cpp",
     "prefix": "vec3",
     "body": [
-      "vector<vector<vector<$1>>> $2($3, vector<vector<$1>>($4, vector<$1>($5)));"
+      "vector $2($3, vector($4, vector<$1>($5)));"
     ]
   },
   "vec4": {
     "scope": "cpp",
     "prefix": "vec4",
     "body": [
-      "vector<vector<vector<vector<$1>>>> $2($3, vector<vector<vector<$1>>>($4, vector<vector<$1>>($5, vector<$1>($6))));"
+      "vector $2($3, vector($4, vector($5, vector<$1>($6))));"
     ]
   },
   "vec5": {
     "scope": "cpp",
     "prefix": "vec5",
     "body": [
-      "vector<vector<vector<vector<vector<$1>>>>> $2($3, vector<vector<vector<vector<$1>>>>($4, vector<vector<vector<$1>>>($5, vector<vector<$1>>($6, vector<$1>($7)))));"
+      "vector $2($3, vector($4, vector($5, vector($6, vector<$1>($7)))));"
     ]
   },
   "unique": {
