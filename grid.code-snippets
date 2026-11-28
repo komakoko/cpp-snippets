@@ -139,6 +139,7 @@
       "\t\telse deque_bfs.push_back({next_type, next_y, next_x});",
       "\t}",
       "}"
-    ]
+    ],
+    "description": "頂点倍化01BFS"
   }
 }
